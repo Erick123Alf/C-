@@ -1,0 +1,33 @@
+instalar la nueva libreria <conio.h> en DEV C++
+   
+
+ 1. Descomprimir el archivo con winrar
+
+ 2. Copiar el archivo "libconio.a" en el directorio "C:\Dev-Cpp\lib"
+
+ 3. Copiar los archivos "conio.c" y "conio.h" en el directorio "C:\Dev-Cpp\include" y reemplazar
+
+ 4. Ejecutamos el 'DEV C++' (previamente instalado) vamos al menu "Herramientas\Opciones del compilador\compilador" 
+
+ 5. Activamos la casilla "Añadir estos comandos a la línea de comandos del linker"
+
+ 6. En el recuadro siguiente escribimos: "-lconio", con el guión y sin comillas.
+
+ 7. Aceptar y listo.
+
+
+instalar la nueva libreria <conio.h> en Code:Blocks
+   
+
+ 1. Descomprimir el archivo con winrar
+
+ 2. Copiar el archivo "libconio.a" en el directorio "C:\Program Files\CodeBlocks\MinGW\lib"
+
+ 3. Copiar los archivos "conio.c" y "conio.h" en el directorio "C:\Program Files\CodeBlocks\MinGW\include" y reemplazar
+
+ 4. Ejecutamos el 'codeblocks' (previamente instalado) vamos al menu "Settings\Compiler and Debugger" en "Global compiler settings
+ en la pestalla de "linker settings" en la pestalla de "add" y añadimos el archivo "libconio.a"
+
+ 5. Ok
+
+ 6, Ok y listo!!
