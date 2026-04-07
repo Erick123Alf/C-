@@ -1,0 +1,43 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: calc3 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1\CONFIG~1\Temp\RSPB.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/calc3.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\F. Programacion\calc3.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\CONFIG~1\Temp\RSPB.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\CONFIG~1\Temp\RSPC.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/calc3.pdb" /debug /machine:I386 /out:"Debug/calc3.exe" /pdbtype:sept 
+".\Debug\calc3.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\CONFIG~1\Temp\RSPC.tmp"
+<h3>Output Window</h3>
+Compiling...
+calc3.cpp
+D:\F. Programacion\calc3.cpp(12) : error C2374: 'i' : redefinition; multiple initialization
+        D:\F. Programacion\calc3.cpp(9) : see declaration of 'i'
+D:\F. Programacion\calc3.cpp(15) : error C2374: 'i' : redefinition; multiple initialization
+        D:\F. Programacion\calc3.cpp(9) : see declaration of 'i'
+D:\F. Programacion\calc3.cpp(21) : error C2374: 'i' : redefinition; multiple initialization
+        D:\F. Programacion\calc3.cpp(9) : see declaration of 'i'
+D:\F. Programacion\calc3.cpp(25) : error C2374: 'i' : redefinition; multiple initialization
+        D:\F. Programacion\calc3.cpp(9) : see declaration of 'i'
+D:\F. Programacion\calc3.cpp(28) : error C2374: 'i' : redefinition; multiple initialization
+        D:\F. Programacion\calc3.cpp(9) : see declaration of 'i'
+D:\F. Programacion\calc3.cpp(31) : warning C4508: 'main' : function should return a value; 'void' return type assumed
+Error executing cl.exe.
+
+
+
+<h3>Results</h3>
+calc3.exe - 5 error(s), 1 warning(s)
+</pre>
+</body>
+</html>

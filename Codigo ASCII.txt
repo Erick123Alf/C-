@@ -1,0 +1,46 @@
+#include <conio.h>
+#include <stdio.h>
+
+main()
+{
+	//imprimimos la esquina superior izquierda
+	printf("%c",201);
+	//imprimimos la linea superior
+	for(int i=0;i<20;i++)
+		printf("%c",205);
+		//imprimimos la esquina superior derecha
+	printf("%c\n",187);
+	//imprimimos las lineas de los lados
+	for(int i=0;i<20;i++)
+	printf("%c                    %c\n",186,186);
+	//imprimimos la esquina inferior izquierda
+	printf("%c",200);
+	//imprimimos la linea inferior
+	for(int i=0;i<20;i++)
+	printf("%c",205);
+	//imprimimos la esquina inferior derecha
+	printf("%c",188);
+	printf("\n");
+	getch();
+	//imprimimos la esquina superior izquierda
+	printf("%c",218);
+	//imprimimos la linea superior
+	for(int i=0;i<20;i++)
+		printf("%c",196);
+	//imprimimos la esquina superior derecha
+	printf("%c",191);
+	//damos salto de linea	
+	printf("\n");
+	//imprimimos las lineas de los lados
+	for(int i=0;i<20;i++)	
+	printf("%c                    %c\n",179,179);
+	//imprimimos la esquina inferior izquierda
+	printf("%c",192);
+	for(int i=0;i<20;i++)
+	//imprimimos la linea inferior
+		printf("%c",196);
+	//imprimimos la esquina inferior derecha
+	printf("%c",217);
+	
+	
+}
