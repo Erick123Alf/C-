@@ -1,0 +1,669 @@
+http://www.iesmajuelo.com/~fatima/soluciones1.txt
+
+
+OLUCIONES RELACION DE PROBLEMAS 1*/
+
+
+
+/* Ejercicio 1
+Programa que lea un número positivo por teclado e informe de 
+si el número es par o impar
+*/
+
+PROGRAMA Ejercicio1
+	VARIABLES
+		num: ENTERO
+	INICIO
+		ESCRIBIR "Introduce número positivo"
+		LEER num
+		SI num <=0 
+			ESCRIBIR "Error. El número no es positivo"
+		SI NO
+			SI num % 2 = 0
+				ESCRIBIR "El número es par"
+			SI NO
+				ESCRIBIR "El número es impar"
+			FIN SI
+		FIN SI
+	FIN
+FIN Ejercicio1
+
+
+/* Ejercicio2:
+Programa que lea un número por teclado e informe de si el número 
+es múltiplo de 2 o de 3 (o de ambos)
+*/
+
+PROGRAMA Ejercicio2
+
+	VARIABLES
+		num: ENTERO
+	CONSTANTES
+		NUMCLAVE1=2
+		NUMCLAVE2=3
+	INICIO
+		ESCRIBIR "Introduce un número"
+		LEER num
+
+		SI num % NUMCLAVE1 == 0
+			ESCRIBIR "El número ", num,"es multiplo de ", NUMCLAVE1
+		FIN SI
+
+ 		SI num % NUMCLAVE2 == 0
+			ESCRIBIR "El número ", num,"es multiplo de ", NUMCLAVE2
+		FIN SI
+	FIN
+FIN Ejercicio2
+
+
+/*Ejercicio 3
+Programa que lea la edad de una persona menor a 50 años e informe de si es un niño (0-12 años), 
+un adolescente (13-17), un joven (18-29) o un adulto
+*/
+
+PROGRAMA Ejercicio3
+	CONSTANTES
+		MAXEDAD=50
+		LIMITE_NIÑO=12
+		LIMITE_ADOLES=17
+		LIMITE_JOVEN=29
+	VARIABLES
+		edad: ENTERO
+	INICIO
+		ESCRIBIR "Introduce la edad, máximo", MAXEDAD
+		LEER edad
+			
+		SI edad < 0 OR edad > MAXEDAD
+			ESCRIBIR "Edad incorrecta, no está en el rango indicado"
+		SI NO
+			SI edad <= LIMITE_NIÑO
+				ESCRIBIR "Es un niño"
+			SI NO
+				SI edad <= LIMITE_ADOLES
+					ESCRIBIR "Es un adolescente"
+				SI NO
+					SI edad <= LIMITE_JOVEN
+						ESCRIBIR "Es un joven"
+					SI NO
+						ESCRIBIR "Es un adulto"
+					FIN SI
+				FIN SI
+			FIN SI
+		FIN SI
+	FIN
+FIN Ejercicio3
+		
+		
+
+
+/* Ejercicio 4
+Programa que lea un carácter y dos números enteros. Si el carácter leído es un
+operador aritmético calcular la operación correspondiente, si es cualquier otro
+muestre un error.
+*/
+
+PROGRAMA Ejercicio4
+	VARIABLES
+		oper: CARACTER
+		num1, num2: ENTERO
+		resul: REAL
+		error: LOGICO /* flag para indicar si hay o no error*/
+	INICIO
+		ESCRIBIR "Introduce dos números"
+		LEER num1, num2
+
+		ESCRIBIR "Introduce operador"
+		LEER oper
+
+		error <- F
+
+		SEGUN_VALOR oper
+			'+': resul <- num1 + num2
+
+			'-': resul <- num1 - num2
+
+			'*': resul <- num1 * num2
+
+			'/':
+			     SI num2 <> 0
+				resul <- num1 / num2
+			     SI NO
+				ESCRIBIR "Error, no puede dividirse por cero"
+				error <- V
+			     FIN SI
+			OTROS: 
+			      ESCRIBIR "Error, operador incorrecto"
+			      error <- V
+		FIN SEGUN_VALOR
+
+		SI error = F /* no ha habido error */
+			ESCRIBIR "El resultado es", resul
+		FIN SI
+		
+			
+	FIN
+FIN Ejercicio4
+
+/* Ejercicio5:
+Programa que lea el estado civil de una persona (S-Soltero, C-Casado, V- Viudo, 
+D-Divorciado)  y su edad y muestre por pantalla el porcentaje de IRPF que debe aplicársele
+ de acuerdo con las reglas del enunciado */
+
+PROGRAMA Ejercicio5
+	CONSTANTES
+		MAXEDAD=100
+	VARIABLES
+		edad: ENTERO
+		est_civil: CARACTER
+		irpf: REAL
+		error: LOGICO
+	INICIO
+		ESCRIBIR "Introduce edad"
+		LEER edad
+		
+		error <- F /* suponemos inicialmente que no hay error */
+
+		SI (edad <0) OR (edad > MAXEDAD) 
+			ESCRIBIR "Edad incorrecta"
+			error <- V
+		FIN SI
+
+		ESCRIBIR "Introduce estado civil S-soltero,C-casado,V-Viudo, D-Divorciado"
+		LEER est_civil
+		
+		SI NOT ((est_civl='S') OR (est_civil='C') OR (est_civil='V') OR (est_civil='D'))
+			ESCRIBIR "Estado civil incorrecto"
+			error <- V
+		FIN SI
+
+		irpf <- 10.5 /* valor por defecto*/
+		SI error = F /* no ha habido error
+
+			SI edad < 35
+				SI est_civil='S' OR est_civil='D'
+					irpf <- 12
+				SI NO
+					irpf <- 11.3
+				FIN SI
+			SI NO /* mayor de 35 años *
+				SI edad > 50
+					irpf <- 8.5
+				FIN SI
+			FIN SI
+			
+			ESCRIBIR "Debe aplicarsele un IRPF del ", irpf, "%"
+		FIN SI
+	FIN
+FIN Ejercicio5
+
+
+		
+
+
+
+/* Ejercicio 6:
+Programa que calcule las soluciones de una ecuación de segundo grado. Deben
+pedirse los tres coeficientes a, b, c*/
+
+PROGRAMA Ejercicio6
+	VARIABLES
+		a,b,c: REAL /* coeficientes*/
+		resul1, resul2: REAL /* resultados de la ecuacion*/
+		aux: REAL  /* para almacenar lo que va dentro de la raiz*/
+	INICIO
+		REPETIR
+			ESCRIBIR "Introduce los tres coeficientes (primero no puede ser 0)"
+			LEER a,b,c
+		MIENTRAS a =0
+
+
+		aux <- b*b - 4*a*c
+		SI aux= 0 /* una solucion */
+			resul1 <-  -b / 2*a	
+			ESCRIBIR "Una sola solucion: ", resul1
+		SI NO
+			SI aux < 0
+				ESCRIBIR "No hay soluciones reales"
+			SI NO
+				/* dos soluciones*/
+				resul1 <-  (-b + RAIZ( aux))/ (2*a) 
+				resul2 <-  (-b + RAIZ( aux))/ (2*a) 
+				
+				ESCRIBIR "Las dos soluciones son:", resul1, " y ", resul2
+			FIN SI
+		FIN
+	FIN
+FIN Ejercicio6
+
+
+/* Ejercicio 7 
+Programa que lea dos números enteros cualesquiera y muestre los números
+comprendidos entre ambos, sin incluirlos a ellos mismos.
+*/
+
+PROGRAMA Ejercicio7
+	VARIABLES
+		i: ENTERO
+		num1, num2: ENTERO
+		aux: ENTERO /* variable para el intercambio*/
+	INICIO
+
+		ESCRIBIR "introduce dos números"
+		LEER num1, num2
+		
+		SI num1 > num2 /* intercambiar num1 y num2 */
+			aux <- num1
+			num1 <- num2
+			num2 <- aux
+		FIN SI
+			
+		PARA i DE num1 + 1 A num2- 1
+			ESCRIBIR i
+		FIN PARA
+		
+	FIN
+
+FIN Ejercicio7
+
+/* Ejercicio 8*/
+/* Programa que lee un número entero positivo y visualiza su tabla de multiplicar*/
+PROGRAMA Ejercicio8
+	VARIABLES
+		num: ENTERO
+		i : ENTERO /* contador de 1 a 10*/
+	INICIO
+		REPETIR
+			ESCRIBIR "Introduce un número positivo"
+			LEER num
+		MIENTRAS num <= 0 
+
+		PARA i DE 1 A 10
+			resul <- num* i
+			ESCRIBIR num,'*',i,'=',resul
+		FIN PARA
+	FIN
+FIN Ejercicio8
+
+/* Ejercicio 9*/
+/*Programa que genere números enteros de 3 en 3 comenzando por el 2 hasta el
+valor máximo menor que 30.*/
+PROGRAMA Ejercicio9
+	CONSTANTES
+		VALORINICIO=2
+		VALORMAX=30
+		INCREMENTO=3	
+	VARIABLES
+		i: ENTERO
+	INICIO
+		PARA i DE VALORINICIO A VALORMAX-1 CON INC=INCREMENTO
+			ESCRIBIR i
+		FIN PARA
+	FIN
+FIN Ejercicio9
+
+/* Ejercicio 10*/
+/* Programa que lea un número N positivo y muestre la suma de los N primeros números*/
+PROGRAMA Ejercicio10
+	VARIABLES
+		num: ENTERO
+		i: ENTERO  /* contador de 1 a num */
+		acum: ENTERO
+	INICIO 	
+		REPETIR
+			ESCRIBIR "Introduce numero"
+			LEER num
+		MIENTRAS num <=0
+		
+		acum <- 0
+		PARA i DE 1 A num
+			acum <- acum + i
+		FIN PARA
+		ESCRIBIR "La suma de los ", num," primeros numeros es", acum
+	FIN
+FIN Ejercicio10
+
+/* Ejercicio 11*/
+/*Programa que lea dos números enteros A y B, y calcule el producto de A y B mediante sumas*/
+/* OJO: los números pueden ser negativos*/
+PROGRAMA Ejercicio11
+	VARIABLES
+		num1,num2: ENTERO
+		total: ENTERO
+		i: ENTERO
+		signo: ENTERO /* nos sirve para identificar el signo del resultado*/
+			     /* 1 si resultado positivo, -1 si resultado negativo*/
+	INICIO
+		ESCRIBIR "Introduce dos números"
+		LEER num1, num2
+		
+		/* PRIMERA SOLUCION
+		signo <- 1 
+		SI num1 < 0  /* num1 es negativo*/
+			num1<- -num1
+		 	SI  num2 >0
+				signo<- -1
+			SI NO /*num1 y num2 negativo*/
+				num2<- -num2
+			FIN SI
+		SI NO /* num1 es positivo */
+			SI num2 < 0 /* num2 es negativo*
+				num2<- -num2
+				signo<- -1
+			FIN SI
+		FIN SI
+		*/
+
+		/* SEGUNDA SOLUCION (MEJOR) */
+		signo <- 1
+		SI num1 < 0
+			num1 <- - num1
+			signo <- -1
+		FIN SI
+		SI num2 < 0
+			num2 <- - num2
+			signo <- (-1)* signo
+		FIN SI
+		
+			
+	
+		
+		total <- 0
+		PARA  i DE 1 A num1
+			total <- total + num2
+		FIN PARA
+
+		total <- signo *total
+
+		ESCRIBIR "El resultado de la multiplicacion es", total
+	FIN
+FIN Ejercicio11
+	
+		
+/* Ejercicio 12
+Programa que lea dos números B y E enteros positivos, y calcule la potencia (B
+elevado a E a través de productos*/
+PROGRAMA Ejercicio12
+	VARIABLES 
+		base,exp: ENTERO
+		i: ENTERO /* contador de las veces que se va a multiplicar*/
+		resul: ENTERO /*acumulador*/
+	INICIO
+		REPETIR
+			ESCRIBIR "Introduce la base y exponentes (deben ser positivos)"
+			LEER base,exp
+		MIENTRAS base <0  OR exp <0
+		
+		
+		SI base = 0 AND exp=0 
+			ESCRIBIR "No puede calcularse, es indeterminacion"
+		SI NO
+			SI base =0
+				res <- 0
+			SI NO
+				resul <- 1
+				/* Ojo: cualquier numero positivo, elevado a cero es 1*/
+				PARA i DE 1 A exp
+					resul <- resul * base
+				FIN PARA
+			FIN SI
+			ESCRIBIR "El resultado es ", resul
+
+		FIN SI
+	FIN
+FIN Ejercicio12 
+
+/* Ejercicio 13:
+Programa que muestre por pantalla todos los números comprendidos entre 1 y
+100 que son múltiplos de 7 o de 13.
+*/
+
+PROGRAMA Ejercicio13
+	COSTANTES
+		MAXIMO=100
+		NUMCLAVE1=7
+		NUMCLAVE2=13
+	VARIABLES
+		i: ENTERO /* contador de 1 a MAXIMO*/
+	INICIO
+		PARA i DE 1 A MAXIMO 
+			SI (i mod NUMCLAVE1 =0) OR (i mod NUMCLAVE2)= 0
+				ESCRIBIR i
+			FIN SI
+		FIN PARA
+	FIN
+FIN Ejercicio13
+
+/* Ejercicio 14 
+Programa que lea un número entero positivo y determine el número de dígitos
+decimales necesarios para la representación de dicho valor.
+*/
+
+PROGRAMA Ejercicio14
+	VARIABLES
+		num: ENTERO
+		res: ENTERO
+		ndigitos: ENTERO
+	INICIO
+		REPETIR
+			ESCRIBIR "Introduce un número positivo"
+			LEER num
+		MIENTRAS num <0
+		
+		ndigitos <- 1
+		res <- num \ 10
+		MIENTRAS res <> 0
+			ndigitos <- ndigitos + 1
+			res <- res \ 10 /* division entera*/
+		FIN MIENTRAS
+
+		ESCRIBIR "El número de digitos para representar el", num, "es", ndigitos
+	FIN
+FIN Ejercicio14
+
+/* 
+Ejercicio 15
+Programa que averigüe si un número N es primo
+Un número es primo si SOLO es divisible por el mismo y por la unidad
+*/
+
+PROGRAMA Ejercicio15
+	VARIABLES
+		num: ENTERO
+		i: ENTERO  /* contador* /
+		primo: LOGICO /* flag para indicar si el numero es o no primo*/
+	INICIO
+		REPETIR
+			ESCRIBIR "Introduce un numero estrictamente positivo"
+			LEER num
+		MIENTRAS num <=0
+
+		
+		primo <- V /*inicialmente suponemos que es primo*/
+		
+		i<- 2
+		MIENTRAS i <= num \ 2 AND primo = V 
+			SI num % i = 0 /* i es divisor de num, por tanto num ya no es primo*/
+				primo <-  F
+			SI NO
+				i <- i + 1
+			FIN SI
+		FIN MIENTRAS
+
+		SI primo = V
+			ESCRIBIR num, "es primo"
+		SI NO
+			ESCRIBIR num, "no es primo"
+		FIN SI
+		
+	FIN
+FIN Ejercicio15	
+					
+
+			
+
+/* Ejercicio 16
+Programa que lea un número entero positivo y averigüe si es perfecto. Un nº es
+perfecto cuando es igual a la suma de sus divisores excepto el mismo.*/
+
+PROGRAMA Ejercicio16
+	VARIABLES
+		num: ENTERO
+		sumadiv: ENTERO /* acumulador*/
+		i: ENTERO /* contador*/
+	INICIO
+		REPETIR
+			ESCRIBIR "Introduce un número estrictamente positivo"
+			LEER num
+		MIENTRAS num <=0
+
+		sumadiv <- 0
+		i <- 1
+		MIENTRAS  i <= (num \2)
+			SI num % i= 0 /* i es divisor de num*/
+				sumadiv <- sumadiv + i
+			FIN SI
+			i <- i +1
+		FIN MIENTRAS
+		
+		SI num = sumadiv
+			ESCRIBIR num, "ES PERFECTO"
+		SI NO
+			ESCRIBIR num, "NO ES PERFECTO"
+		FIN SI
+	FIN
+FIN Ejercicio16
+
+
+/*Programa que dado un numero entero  calcule el factorial.*/
+PROGRAMA Ejercicio17
+	VARIABLES
+		num: ENTERO
+		i:  ENTERO /*contador*/
+		total: ENTERO /* acumulador*/
+	INICIO
+		REPETIR
+			ESCRIBIR "Introduce número mayor o igual que 0"
+			LEER num
+		MIENTRAS num < 0
+
+		total <- 1
+
+		PARA i DE 2 A num 
+			total <- total * i
+		FIN PARAL
+
+		ESCRIBIR "El factorial de ", num, "es ", total
+	FIN
+FIN Ejercicio17
+
+
+
+
+/*Programa que genere los N primeros términos de la serie de Fibonacci. El valor
+de N (entero y positivo) deberá ser leído por teclado.*/
+
+PROGRAMA Ejercicio18
+	VARIABLES
+		cantidad: ENTERO /* cantidad de terminos que se van a escribir*/
+		i:  ENTERO /*contador de 1 a cantidad*/
+		num1, num2, num3: ENTERO 
+	INICIO
+		REPETIR
+			ESCRIBIR "Introduce cuantos terminos de la sucesion de Fibonacci quieres ver"
+			LEER cantidad
+		MIENTRAS cantidad <= 0 
+		/* cantidad es seguro >= 1*/
+		
+		
+		num1 <- 1
+		num2 <- 1
+		i <- 1
+
+		/* PRIMERA SOLUCION
+		ESCRIBIR num1
+		
+
+		SI cantidad > 1
+			ESCRIBIR num2
+			i <- i + 1 /* se ha escrito un numero más */
+		FIN SI
+
+		MIENTRAS i < cantidad
+			num 3 <- num1 + num 2
+			ESCRIBIR num 3
+				
+			num1<- num2
+			num2<- num3
+
+			i <- i + 1
+		FIN MIENTRAS
+		*/
+
+		
+		/* SEGUNDA SOLUCION : MEJOR */
+
+		PARA i DE 1 A cantidad
+			ESCRIBIR num1
+			num3 <- num1 + num2
+			num1 <- num2
+			num2 <- num3
+		FIN PARA
+
+			
+		
+	FIN
+FIN Ejercicio18
+
+/* PROGRAMA Ejercicio19
+
+Programa que lea N números mayores que cero e imprima la media, el valor
+máximo y el mínimo. Para terminar de introducir números se debe introducir el
+0.
+*/
+
+PROGRAMA Ejercicio19
+	VARIABLES
+		
+		num:  ENTERO 
+		max, min: ENTERO
+		media, suma, cantidad: ENTERO 
+	INICIO
+		cantidad <- 0
+		suma <- 0
+	
+		REPETIR				
+			ESCRIBIR "Introduce un número positivo (0 para terminar)"
+			LEER num		
+		MIENTRAS num <=0
+
+		max <- num
+		min <- num
+
+		MIENTRAS num <> 0
+			
+			suma <- suma + num
+			cantidad <- cantidad + 1
+
+			SI num > max
+				max <- num
+			FIN SI
+			
+			SI num < min
+				min <- num
+			FIN SI
+			
+			/* OJO: Es un bucle anidado dentro de otro*/
+			REPETIR							
+				ESCRIBIR "Introduce un número positivo (0 para terminar)"
+				LEER num		
+			MIENTRAS num < 0
+ 
+		FIN MIENTRAS
+
+		ESCRIBIR "El máximo es ", max
+		ESCRIBIR "El mínimo es ", min
+		media <- suma / cantidad
+		ESCRIBIR "La media es ", media
+		
+	FIN
+FIN Ejercicio19
